@@ -1,3 +1,28 @@
-home page of mukesh
+function createLinkDirectory(links, containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) {
+    console.error(`Container element with ID '${containerId}' not found.`);
+    return;
+  }
 
-This is ok
+  const ul = document.createElement('ul');
+  links.forEach(link => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = link.url;
+    a.textContent = link.text;
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+
+  container.appendChild(ul);
+}
+
+// Example usage:
+const myLinks = [
+  { text: 'Google', url: 'https://www.google.com' },
+  { text: 'Wikipedia', url: 'https://www.wikipedia.org' },
+  { text: 'Mozilla', url: 'https://www.mozilla.org' }
+];
+
+createLinkDirectory(myLinks, 'link-directory');
